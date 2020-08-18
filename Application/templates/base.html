@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Books {% block title %}- Home{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='site_style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    {% block head %}
+    {% endblock %}
+</head>
+<body>
+<nav>
+        <div id="menuLine">
+            <ul class="menu">
+                <li class="menuline"><a href="/" class="link"><b>Home</b></a></li>
+                <li class="menuline"><a href="/books/1/" class="link"><b>Books</b></a></li>
+                <li class="menuline"><a href="/authors/1/" class="link"><b>Authors</b></a></li>
+                <li class="menuline"><a href="/genres" class="link"><b>Genres</b></a></li>
+                <li class="menuline"><a href="/interesting_facts" class="link"><b>Interesting Facts</b></a></li>
+            </ul>
+            <div id="searchArea">
+                <form class="search" action="/search">
+                    <input type="text" name="query" value="{{ query }}" placeholder="isbn/ title/ author/ character">
+                </form>
+            </div>
+        </div>
+    </nav>
+{% block body %}
+{% endblock %}
+</body>
+</html>

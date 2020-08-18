@@ -1,0 +1,93 @@
+{% extends('base.html') %}
+
+{% block title %}- Genres{% endblock %}
+
+{% block body %}
+<br>
+<br>
+<div class="genre_search">
+    <form class="genre_search">
+        <input name="query" value="{{ query }}" placeholder="Find a genre by name"/>
+    </form>
+</div>
+
+<div>
+    <br>
+    <br>
+    {% if search_info %}
+        <table>
+            {% for genre in search_info %}
+                <tr>
+                    <td><a href="/genres/{{genre['id']}}/">{{genre["name"]}}</a></td>
+                    <td>{{genre["books"]|length}}</td>
+                </tr>
+             {% endfor %}
+        </table>
+    {% endif %}
+    <br>
+    <br>
+</div>
+
+<div>
+    <table class="left">
+        <tr>
+            <th>Genre name</th>
+            <th>Books count</th>
+        </tr>
+        {% for genre in list_part[:15] %}
+            <tr>
+                <td><a href="/genres/{{genre['id']}}/">{{genre["name"]}}</a></td>
+                <td>{{ genre["books"]|length }} </td>
+            </tr>
+         {% endfor %}
+    </table>
+
+    <table class="right">
+        <tr>
+            <th>Genre name</th>
+            <th>Books count</th>
+        </tr>
+        {% for genre in list_part[15:] %}
+            <tr>
+                <td><a href="/genres/{{genre['id']}}/">{{genre["name"]}}</a></td>
+                <td>{{ genre["books"]|length }} </td>
+            </tr>
+         {% endfor %}
+    </table>
+</div>
+<br>
+<br>
+<div class="center">
+    <div class="pagination">
+        {% if pages < 6 %}
+            {% for idx in range(1, pages + 1) %}
+                <a href="?page={{ idx }}&query={{ query }}"> {{ idx }} </a>
+            {%endfor%}
+        {% else %}
+            <a href="?page={{ page - 1 }}&query={{ query }}">&laquo;</a>
+            <a href="?page=1&query={{ query }}"> {{ 1 }} </a>
+            {% if page == 1 %}
+                {% for idx in range(page + 1, page + 5) %}
+                    <a href="?page={{ idx }}&query={{ query }}"> {{ idx }} </a>
+                {%endfor%}
+                <a>...</a>
+            {% elif page > pages - 6 %}
+                <a>...</a>
+                {% for idx in range(page - 1, pages) %}
+                    <a href="?page={{ idx }}&query={{ query }}"> {{ idx }} </a>
+                {%endfor%}
+            {% else %}
+                <a>...</a>
+                {% for idx in range(page, page + 5) %}
+                    <a href="?page={{ idx }}&query={{ query }}"> {{ idx }} </a>
+                {%endfor%}
+                <a>...</a>
+            {% endif %}
+            <a href="?page={{ pages }}&query={{ query }}"> {{ pages }} </a>
+            <a href="?page={{ page+1 }}&query={{ query }}">&raquo;</a>
+        {% endif %}
+    </div>
+</div>
+<br>
+<br>
+{% endblock %}

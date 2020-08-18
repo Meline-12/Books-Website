@@ -1,0 +1,103 @@
+{% extends('base.html') %}
+
+{% block title %}- Search{% endblock %}
+
+{% block body %}
+<br>
+<h1>As long as one keeps searching, the answers come.</h1>
+<br>
+<br>
+<div>
+    {% if not books and not authors and not characters%}
+    <hr>
+    <h2>Oops! No results found</h2>
+    {% endif %}
+</div>
+
+<div>
+    {% if books %}
+        <table class="norm">
+            <tr>
+                <th colspan="7"><h1>Books</h1></th>
+            </tr>
+            {% for book in books %}
+            <tr>
+                <td><img src='{{book["img"]}}' width="100" height="100"></td>
+                <td><a href="/books/{{ book['id'] }}">{{book["title"]}}</a></td>
+                <td>
+                    {% for author in book["author"] %}
+                        {% if author[2] == "Writer" %}
+                            <a href="/authors/{{author[0]}}" >{{author[1]}}</a>
+                        {% else %}
+                            <a href="/authors/{{author[0]}}" > {{author[1]}} </a> ({{author[2]}})
+                        {% endif %}
+                    {% endfor %}
+                </td>
+                {% if book["year"] %}
+                    <td>{{book["year"]}}</td>
+                {% endif %}
+                <td>Average rating: {{book["average_rating"]}}</td>
+                <td>{{book["rating_count"]}} ratings</td>
+            </tr>
+            {% endfor %}
+        </table>
+    <br>
+    <br>
+    {% endif %}
+</div>
+
+<div>
+    {% if authors %}
+        <table class="norm">
+            <tr>
+                <th colspan="5"><h1>Authors</h1></th>
+            </tr>
+            {% for author in authors %}
+            <tr>
+                <td><img src='{{author["img"]}}' width="100" height="100"></td>
+                <td><a href="/authors/{{ author['id'] }}"> {{author["name"]}} </a></td>
+                <td>{{author["books_count"]}} books</td>
+                <td>Average rating: {{author["average_rating"]}}</td>
+                <td>{{author["rating_count"]}} ratings</td>
+            </tr>
+            {% endfor %}
+        </table>
+    <br>
+    <br>
+    {% endif %}
+</div>
+
+<div>
+    {% if characters %}
+        {% for character in characters %}
+            <table class="norm">
+                <tr>
+                    <th colspan="7"><h1>Books with <a href="{{character['link']}}">{{character["name"]}}</a></h1></th>
+                </tr>
+                {% for book in character["books"] %}
+                <tr>
+                    <td><img src='{{book["img"]}}' width="100" height="100"></td>
+                    <td><a href="/books/{{ book['id'] }}">{{book["title"]}}</a></td>
+                    <td>
+                        {% for author in book["author"] %}
+                            {% if author[2] == "Writer" %}
+                                <a href="/authors/{{author[0]}}" >{{author[1]}}</a>
+                            {% else %}
+                                <a href="/authors/{{author[0]}}" > {{author[1]}} </a> ({{author[2]}})
+                            {% endif %}
+                        {% endfor %}
+                    </td>
+                   {% if book["year"] %}
+                        <td>{{book["year"]}}</td>
+                    {% endif %}
+                    <td>Average rating: {{book["average_rating"]}}</td>
+                    <td>{{book["rating_count"]}} ratings</td>
+                </tr>
+                {% endfor %}
+            </table>
+        {% endfor %}
+    <br>
+    <br>
+    {% endif %}
+</div>
+{% endblock %}

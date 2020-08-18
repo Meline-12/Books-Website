@@ -1,0 +1,117 @@
+{% extends('base.html') %}
+
+{% block title %}- {{ info["title"]  }}{% endblock %}
+
+{% block body %}
+<br>
+<div class="bookname">
+    <p><b>{{ info["title"] }}</b></p>
+</div>
+<br>
+<table class="norm">
+    <tr>
+        <td>
+            <img class="each" src="{{ info['img'] }}"/>
+        </td>
+
+        <td class="details_row">
+            <table class="details">
+                <tr>
+                    <td class="row-header"><b>Author(s)</b></td>
+                    <td>
+                        {% for author in info["author"] %}
+                        {% if author[2] == "Writer" %}
+                        <a href="/authors/{{author[0]}}">{{author[1]}}</a>
+                        {% else %}
+                        <a href="/authors/{{author[0]}}"> {{author[1]}} </a> ({{author[2]}})
+                        {% endif %}
+                        {% endfor %}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="row-header"><b>Rating</b></td>
+                    <td>Average rating: {{ info["average_rating"] }}, {{ info["rating_count"] }} ratings</td>
+                </tr>
+
+                {% if info["isbn"] %}
+                <tr>
+                    <td class="row-header"><b>ISBN</b></td>
+                    <td>{{ info["isbn"] }}</td>
+                </tr>
+                {% endif %}
+
+                {% if info["year"] %}
+                <tr>
+                    <td class="row-header"><b>Year of publication</b></td>
+                    <td>{{ info["year"] }}</td>
+                </tr>
+                {% endif %}
+
+                {% if info["publisher"] %}
+                <tr>
+                    <td class="row-header"><b>Publisher</b></td>
+                    <td>{{ info["publisher"] }}</td>
+                </tr>
+                {% endif %}
+
+                {% if info["pages"] %}
+                <tr>
+                    <td class="row-header"><b>Page count</b></td>
+                    <td>{{ info["pages"] }}</td>
+                </tr>
+                {% endif %}
+
+                {% if info["language"] %}
+                <tr>
+                    <td class="row-header"><b>Edition language</b></td>
+                    <td>{{ info["language"] }}</td>
+                </tr>
+                {% endif %}
+
+                {% if info["price"] %}
+                <tr>
+                    <td class="row-header"><b>Price</b></td>
+                    <td><a href="{{ info['price'] }}">Amazon</a></td>
+                </tr>
+                {% endif %}
+
+                {% if characters %}
+                <tr>
+                    <td class="row-header"><b>Characters</b></td>
+                    <td>
+                        {% for character in characters[:-1] %}
+                        <a href="{{ character['link'] }}">{{ character["name"]}}, </a>
+                        {% endfor %}
+                        <a href="{{ characters[-1]['link'] }}">{{ characters[-1]["name"]}} </a>
+                    </td>
+                </tr>
+                {% endif %}
+
+                {% if genres %}
+                <tr>
+                    <td class="row-header"><b>Genres</b></td>
+                    <td>
+                        {% for genre in genres[:-1] %}
+                        <a href="/genres/{{ genre['id'] }}/">{{ genre["name"]}}, </a>
+                        {% endfor %}
+                        <a href="/genres/{{ genres[-1]['id'] }}/">{{ genres[-1]["name"]}} </a>
+                    </td>
+                </tr>
+                {% endif %}
+            </table>
+        </td>
+    </tr>
+</table>
+    <div class="des">
+        <table class="description">
+            {% if info["description"] %}
+            <tr>
+                <td><p align="justify">{{ info["description"] }}></p></td>
+            </tr>
+            {% endif %}
+        </table>
+    </div>
+
+    <br>
+    <br>
+    {% endblock %}

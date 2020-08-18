@@ -1,0 +1,69 @@
+{% extends('base.html') %}
+
+{% block title %}- {{ info["name"]  }}{% endblock %}
+
+{% block body %}
+<br>
+<br>
+<div class="authorname">
+    <p><b>{{ info["name"] }}</b></p>
+</div>
+<br>
+<table class="norm">
+    <tr>
+        <td>
+            <img class="each" src="{{ info['img'] }}"/>
+        </td>
+
+        <td class="details_row">
+            <table class="details">
+                {% if info["average_rating"] %}
+                <tr>
+                    <td class="row-header"><b>Average rating</b></td>
+                    <td>{{ info["average_rating"] }}</td>
+                </tr>
+                {% endif %}
+
+                {% if info["rating_count"] %}
+                <tr>
+                    <td class="row-header"><b>Ratings</b></td>
+                    <td>{{ info["rating_count"] }}</td>
+                </tr>
+                {% endif %}
+
+                {% if info["books_count"] %}
+                <tr>
+                    <td class="row-header"><b>Books</b></td>
+                    <td><a href="/authors/{{info['id']}}/{{ books_count }}">{{ books_count }}</a></td>
+                </tr>
+                {% endif %}
+
+                {% if genres %}
+                <tr>
+                    <td class="row-header"><b>Genres</b></td>
+                    <td>
+                        {% for genre in genres[:-1] %}
+                        <a href="/genres/{{ genre['id'] }}/">{{ genre["name"]}}, </a>
+                        {% endfor %}
+                        <a href="/genres/{{ genres[-1]['id'] }}/">{{ genres[-1]["name"]}} </a>
+                    </td>
+                </tr>
+                {% endif %}
+            </table>
+        </td>
+    </tr>
+</table>
+
+    <div class="des">
+        <table class="description">
+            {% if info["description"] %}
+            <tr>
+                <td><p align="justify">{{ info["description"] }}></p></td>
+            </tr>
+            {% endif %}
+        </table>
+    </div>
+
+    <br>
+    <br>
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends('base.html') %}
+
+{% block title %}- Authors{% endblock %}
+
+{% block body %}
+
+<form>
+    <div class="dropdwn">
+        <button class="sortby">Sort By</button>
+        <div class="dropcont">
+            <a name="books_count" href="?query=books_count">books count</a>
+            <a name="rating" href="?query=rating">rating</a>
+        </div>
+    </div>
+</form>
+
+<table class="norm">
+    <tr>
+        <th colspan="5"><h1>AUTHORS</h1></th>
+    </tr>
+    {%for i in list_part%}
+    <tr>
+        <td><img src = "{{i['img']}}" width="100" height="100" ></td>
+        <td><a href="/authors/{{i['id']}}">{{i["name"]}}</a></td>
+        <td>{{i["books_count"]}} books</td>
+        <td>{{i["rating_count"]}} ratings</td>
+        <td>Average rating: {{i["average_rating"]}}</td>
+    </tr>
+    {%endfor%}
+</table>
+<br>
+<br>
+<div class="center">
+    <div class="pagination">
+        {% if pages < 6 %}
+            {% for idx in range(1, pages + 1) %}
+                <a href="{{ url_for('displayitem', page=idx) }}?{{request.query_string.decode()}}"> {{ idx }} </a>
+            {%endfor%}
+        {% else %}
+            <a href="{{ url_for('displayitem', page=page-1) }}?{{request.query_string.decode()}}">&laquo;</a>
+            <a href="{{ url_for('displayitem', page=1) }}?{{request.query_string.decode()}}"> {{ 1 }} </a>
+            {% if page == 1 %}
+                {% for idx in range(page + 1, page + 5) %}
+                    <a href="{{ url_for('displayitem', page=idx) }}?{{request.query_string.decode()}}"> {{ idx }} </a>
+                {%endfor%}
+                <a>...</a>
+            {% elif page > pages - 6 %}
+                <a>...</a>
+                {% for idx in range(page - 1, pages) %}
+                    <a href="{{ url_for('displayitem', page=idx) }}?{{request.query_string.decode()}}"> {{ idx }} </a>
+                {%endfor%}
+            {% else %}
+                <a>...</a>
+                {% for idx in range(page, page + 5) %}
+                    <a href="{{ url_for('displayitem', page=idx) }}?{{request.query_string.decode()}}"> {{ idx }} </a>
+                {%endfor%}
+                <a>...</a>
+            {% endif %}
+            <a href="{{ url_for('displayitem', page=pages) }}?{{request.query_string.decode()}}"> {{ pages }} </a>
+            <a href="{{ url_for('displayitem', page=page+1) }}?{{request.query_string.decode()}}">&raquo;</a>
+        {% endif %}
+    </div>
+</div>
+<br>
+<br>
+{% endblock %}

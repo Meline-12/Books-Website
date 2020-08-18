@@ -1,0 +1,396 @@
+*{
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+#bgpic {
+	background-image: url("images/nav.jpg");
+	background-size: cover;
+	background-attachment: fixed;
+	background-position: 0 -285px;
+	height: 40vw;
+	max-height: 500px;
+	width: 100%;
+	background-repeat: no-repeat;
+	margin: auto;
+}
+
+nav {
+	width: 100%;
+	padding: 30px;
+	background-color: rgb(124, 124, 124);
+}
+
+#menuLine {
+	width: 70%;
+	margin: auto;
+	background-color: rgb(124, 124, 124);
+	display: flex;
+	justify-content: space-between;
+}
+
+header{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 35px;
+}
+.menu{
+	display: flex;
+	font-size: 30px;
+	align-items: flex-end;
+}
+
+.menucont{
+	margin-left: 50px;
+	margin-right: 50px;
+}
+.menucont a{
+	color: white;
+}
+.menucont a:hover{
+	color: #495A25;
+	transition:0.5s;
+}
+
+div.searchArea {
+    width: 25%;
+}
+
+form.search input {
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid grey;
+  float: left;
+  width: 100%;
+  background: #f1f1f1;
+  justify-content: space-between;
+}
+
+form.search button {
+  padding: 10px;
+  float: left;
+  width: 5%;
+  background: #2196F3;
+  color: white;
+  font-size: 14px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+}
+
+form.search button:hover {
+  background: #0b7dda;
+}
+
+form.genre_search input {
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid grey;
+  float: left;
+  width: 20%;
+  background: #f1f1f1;
+  margin-left: 2%;
+}
+
+form.genre_search button {
+  padding: 10px;
+  float: left;
+  background: #2196F3;
+  color: white;
+  font-size: 14px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+}
+
+form.genre_search button:hover {
+  background: #0b7dda;
+}
+ul.menu {
+	list-style: none;
+	margin: 0;
+	display: flex;
+	padding: 0;
+	overflow: hidden;
+}
+
+li.menuline {
+	display: flex;
+	font-size: 25px;
+}
+
+li a {
+	color: white;
+	text-align: center;
+	padding: 12px 14px;
+	text-decoration: none;
+	display: block;
+}
+
+li a:hover {
+	transition: 0.5s;
+	background-color: #fff;
+	color: rgb(124, 124, 124);
+}
+
+div.idiom p {
+    color: white;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    font-size: 30px;
+    letter-spacing: 2px;
+    word-spacing: 2px;
+    font-weight: normal;
+    font-style: normal;
+    margin-left: 3%;
+    padding-top: 150px;
+}
+
+.sortby{
+	background-color: rgba(0,0,0,0.6);
+	color: white;
+	padding: 16px;
+	font-size: 16px;
+	border:none;
+	border-radius: 12px;
+}
+
+.dropdwn{
+	position: relative;
+	display: inline-block;
+	float: right;
+	margin-right: 5%;
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+
+.dropcont{
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 100px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropcont a{
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  border-radius: 12px;
+}
+
+.dropcont a:hover{
+	background-color: #ddd;
+}
+
+.dropdwn:hover .dropcont{
+	display: block;
+	border-radius: 12px;
+}
+
+a:link {
+    color: black;
+}
+
+a:visited {
+  color: black;
+}
+
+.all_books {
+    text-align: right;
+    margin-right: 2%;
+}
+
+table.details {
+  width: 96%;
+  float: left;
+  margin-right: 2%;
+  margin-left: 2%;
+}
+
+table.details th {
+  text-align: left;
+  padding: 8px;
+}
+
+table.details td {
+  text-align: left;
+  padding: 8px;
+}
+
+td.row-header {
+    width: 20%;
+}
+
+table.details a:link {
+    color: black;
+}
+
+table.details a:visited {
+  color: black;
+}
+
+table.right {
+  border-collapse: collapse;
+  width: 40%;
+  float: right;
+  margin-right: 5%;
+}
+
+table.left {
+  border-collapse: collapse;
+  width: 40%;
+  float: left;
+  margin-left: 5%;
+}
+
+table.norm {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table.norm th, td {
+  text-align: center;
+  padding: 8px;
+}
+
+table.norm th {
+  background-color: rgba(0,0,0,0.6);
+  color: white;
+}
+
+table.norm tr:nth-child(even) {
+    background-color: rgb(220, 223, 224);
+}
+
+table.norm tr {
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+    border-collapse: collapse;
+}​
+
+
+* {box-sizing: border-box;}
+
+.center {
+  text-align: center;
+}
+
+.pagination {
+  display: inline-block;
+}
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color .3s;
+  border: 1px solid #ddd;
+  margin: 0 4px;
+}
+
+.pagination a.active {
+  background-color: #4CAF50;
+  color: white;
+  border: 1px solid #4CAF50;
+}
+
+.pagination a:hover:not(.active) {background-color: #ddd;}
+
+.each {
+    width: 300px;
+    height: 300px;
+    display: block;
+    float: left;
+    margin-left: 5%;
+}
+
+div.header {
+    text-align: center;
+    font-size: 150%;
+}
+
+div.books-languages {
+    position: inline-block;
+}
+
+div.books-languages img {
+    margin-left: 5%;
+}
+
+div.books-languages span {
+    position: absolute;
+    vertical-align: middle;
+    text-align: center;
+    margin-right: 20%;
+    margin-left: 15%;
+    top: 75%;
+    width: 25%;
+    background-color: rgb(220, 223, 224);
+}
+
+div.books-publishers {
+    position: inline-block;
+}
+
+div.books-publishers img {
+    float: right;
+}
+
+div.books-publishers span {
+    position: absolute;
+    vertical-align: middle;
+    text-align: justify;
+    margin-right: 5%;
+    margin-left: 3%;
+    top: 160%;
+    width: 30%;
+    background-color: #ADD8E6;
+}
+
+div.books-genres {
+    position: inline-block;
+}
+
+div.books-genres img {
+    float: left;
+}
+
+div.books-genres span {
+    position: absolute;
+    vertical-align: middle;
+    text-align: justify;
+    margin-right: 20%;
+    margin-left: 2%;
+    top: 250%;
+    width: 25%;
+    background-color: #FFA07A;
+}
+
+ul.other-facts {
+  display: block;
+  list-style-type: disc;
+  margin-top: 1em;
+  margin-bottom: 1 em;
+  margin-left: 3%;
+  margin-right: 0;
+  padding-left: 40px;
+}
+
+li.other-facts {
+    display: list-item;
+}
+
+div.authorname p {
+    font-size: 40px;
+    text-align: center;
+}
+
+div.bookname p {
+    font-size: 40px;
+    text-align: center;
+}
