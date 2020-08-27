@@ -1,6 +1,6 @@
 # Books-Website
 
-The website cointains 10 000 books. There are 4 sections: Home, Books, Authors, Genres, Interesting Facts. In each section you can search, sort the books or authors.
+The website contains 10 000 books. There are 4 sections: Home, Books, Authors, Genres, Interesting Facts. In each section you can search, sort the books or authors.
 You can search by ISBN, authors' name, books' name, characters' name. 
 
 About technical solutions you can find in the presentation.
