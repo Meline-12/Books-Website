@@ -7,4 +7,11 @@ About technical solutions you can find in the presentation.
 
 If you want to run the application, you should download Application folder and run run.py, in the browser write localhost:5000.
 
+For installation:
+- sqlite3
+- bs4
+- urllib
+- Flask
+- Jinja2
+
 Enjoy our website!
